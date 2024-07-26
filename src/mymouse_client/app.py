@@ -39,7 +39,7 @@ alphabet = [
 
 def postkey(key, ip, mode="lower"):  # mode: upper, lower
     print("{key}, {ip}, {mode}".format(key=key, ip=ip, mode=mode))
-    requests.post(url=f"{ip}/api/{key}")
+    response = requests.post(url=f"{ip}/api/{key}")
 
 
 class MyMouseClient(toga.App):
