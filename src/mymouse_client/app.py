@@ -37,7 +37,7 @@ alphabet = [
 
 
 def postkey(key, mode="lower"):  # mode: upper, lower
-    pass
+    print("{key}, {mode}".format(key=key, mode=mode))
 
 
 class MyMouseClient(toga.App):
@@ -50,7 +50,7 @@ class MyMouseClient(toga.App):
         """
         main_box = toga.Box(
             children=[
-                toga.Button(text=i, on_press=lambda: postkey(key=i)) for i in alphabet
+                toga.Button(text=i, on_press=lambda i: postkey(key=i.text)) for i in alphabet
             ]
         )
 
