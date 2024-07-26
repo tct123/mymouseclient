@@ -42,14 +42,17 @@ def postkey(key, ip, mode="lower"):  # mode: upper, lower
 
 class MyMouseClient(toga.App):
     def startup(self):
-        self.ip = toga.TextInput(placeholder="IP")
+        self.ip = toga.TextInput(placeholder="IP", style=Pack(padding=10, flex=1))
         buttonlist = [
             toga.Button(
-                text=i, on_press=lambda i: postkey(key=i.text, ip=self.ip.value)
+                text=i,
+                on_press=lambda i: postkey(key=i.text, ip=self.ip.value),
+                style=Pack(padding=10, flex=1),
             )
             for i in alphabet
         ]
         content = toga.Box(children=[self.ip])
+        content.style.direction = "column"
         for button in buttonlist:
             content.add(button)
         container = toga.ScrollContainer(content=content)
