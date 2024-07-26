@@ -36,26 +36,27 @@ alphabet = [
 ]
 
 
-def postkey(key, mode="lower"):  # mode: upper, lower
-    print("{key}, {mode}".format(key=key, mode=mode))
+def postkey(key, ip, mode="lower"):  # mode: upper, lower
+    print("{key}, {ip}, {mode}".format(key=key, ip=ip, mode=mode))
 
 
 class MyMouseClient(toga.App):
     def startup(self):
-        """Construct and show the Toga application.
-
-        Usually, you would add your application to a main content box.
-        We then create a main window (with a name matching the app), and
-        show the main window.
-        """
-        main_box = toga.Box(
-            children=[
-                toga.Button(text=i, on_press=lambda i: postkey(key=i.text)) for i in alphabet
-            ]
-        )
+        self.ip = toga.TextInput(placeholder="IP")
+        buttonlist = [
+            toga.Button(
+                text=i, on_press=lambda i: postkey(key=i.text, ip=self.ip.value)
+            )
+            for i in alphabet
+        ]
+        content = toga.Box(children=[self.ip])
+        for button in buttonlist:
+            content.add(button)
+        container = toga.ScrollContainer(content=content)
+        # main_box = toga.Box([container])
 
         self.main_window = toga.MainWindow(title=self.formal_name)
-        self.main_window.content = main_box
+        self.main_window.content = container
         self.main_window.show()
 
 
