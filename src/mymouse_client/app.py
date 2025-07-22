@@ -42,6 +42,7 @@ def postkey(key, ip, mode="lower"):  # mode: upper, lower
     response = requests.get(url=f"{ip}/api/{key}")
     print(response.text)
 
+
 class MyMouseClient(toga.App):
     def startup(self):
         self.ip = toga.TextInput(placeholder="IP", style=Pack(padding=10, flex=1))
