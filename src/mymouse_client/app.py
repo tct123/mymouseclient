@@ -45,12 +45,12 @@ def postkey(key, ip, mode="lower"):  # mode: upper, lower
 
 class MyMouseClient(toga.App):
     def startup(self):
-        self.ip = toga.TextInput(placeholder="IP", style=Pack(padding=10, flex=1))
+        self.ip = toga.TextInput(placeholder="IP", style=Pack(margin=10, flex=1))
         buttonlist = [
             toga.Button(
                 text=i,
                 on_press=lambda i: postkey(key=i.text, ip=self.ip.value),
-                style=Pack(padding=10, flex=1),
+                style=Pack(margin=10, flex=1),
             )
             for i in alphabet
         ]
